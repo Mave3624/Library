@@ -1,30 +1,7 @@
+const main = document.querySelector("main")
+const add = document.querySelector(".add>button")
 
-const Library = [
-    {
-        title: "The woman I needed",
-        author:"Maverick",
-        page: 321,
-        status: "unread",
-    },
-    {
-        title: "What it takes to be a man",
-        author:"Maverick",
-        page: 631,
-        status: "read",
-    },
-    {
-        title: "What I have learnt",
-        author:"Maverick",
-        page: 211,
-        status: "read",
-    },
-    {
-        title: "Lazy lady",
-        author: "MKaverick",
-        page: 452,
-        status: "Unread",
-    },
-]
+const Library = []
 
 function Book(title, author, page, status) {
     this.title = title;
@@ -33,8 +10,8 @@ function Book(title, author, page, status) {
     this.status = status
 }
 
-function addBook(Data) {
-    Data = new Book("untold story", "Maverick", 534, "read")
+function addBook(a, b, c, d, e) {
+    const Data = new Book(a, b, c, d, e)
     let added = {
         title: Data.title,
         author: Data.author,
@@ -43,6 +20,53 @@ function addBook(Data) {
     }
     Library.push(added)
 }
-addBook()
 
-console.table(Library)
+let color = function(value) {
+    if (value.textContent !== "Read")  {
+        value.style.color = "red"
+    }
+}
+
+add.addEventListener('click', (title, author, page, status) => {
+    title = prompt("Enter book name", "More than lovers")
+    author = prompt("Enter book author", "Mave")
+    page = prompt("Enter number of page", 762)
+    status = prompt("Enter read status", "Read")
+
+addBook(title, author, page, status)
+
+    let append = function() {
+        let length = Library.length - 1
+        let object = Library[length]
+          
+    let book = document.createElement("div")
+        book.setAttribute("class", "book")
+        book.setAttribute("id", length)
+
+    let bookTitle = document.createElement("p")
+        bookTitle.setAttribute("class", "title")
+        bookTitle.textContent = object.title
+        book.appendChild(bookTitle)
+
+    let bookAuthor = document.createElement("p")
+        bookAuthor.setAttribute("class", "author")
+        bookAuthor.textContent = `${object.author}.`
+        book.appendChild(bookAuthor)
+
+    let bookPage = document.createElement("p")
+        bookPage.textContent = `${object.page}pages.`
+        book.appendChild(bookPage)
+
+    let bookStatus = document.createElement("p")
+        bookStatus.textContent = object.status
+        book.appendChild(bookStatus)
+        color(bookStatus)
+
+    let by = document.createElement("span")
+        by.textContent = "By"
+        bookAuthor.before(by)
+
+    main.appendChild(book)
+    }
+    append()
+})

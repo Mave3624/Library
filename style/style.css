@@ -11,7 +11,7 @@
     box-sizing: content-box;
 }
 body {
-    background-color: red;
+    background-color: rgb(2, 74, 44);
 }
 .head {
     max-width: 1200px;
@@ -20,7 +20,8 @@ body {
     padding: 10px;
     display: grid;
     grid-template: 100% / 1fr max-content;
-    background-color: rgba(88, 179, 179, 0.764);
+    background-color: rgba(56, 142, 77, 0.259);
+    border-radius: 5px;
 }
 .name {
     font-family: nullish;
@@ -34,21 +35,50 @@ body {
     background-color: gray;
     border: 1px solid rgb(60, 76, 60);
     border-radius: 5px;
-    box-shadow: 1px 1px 2px 1px rgb(81, 126, 84);
     width: 50px;
 }
 main {
-
-}
-span {
-    display: block;
-    color: green;
-    font-family: monospace;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    display: grid;
+    grid-template-rows: repeat(Auto-fit, 150px);
+    grid-template-columns: repeat(Auto-fit, 120px);
+    gap: 10px;
+    justify-content: center;
+    box-sizing: border-box;
 }
 .book {
-    width: 150px;
-    height: 200px;
-    background-color: rgb(40, 60, 69);
+    width: 120px;
+    height: 150px;
+    background-color: rgba(5, 183, 136, 0.838);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 1px 8px 8px 1px ;
+    border: 1px solid rgb(4, 255, 222);
+}
+
+.book p {
     font-family: nullish;
     text-align: center;
+    font-size: 0.6rem;
+    text-wrap: wrap;
+    font-weight: 600;
+}
+
+span {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.book .title {
+    font-size: 0.65rem;
+    color: rgb(234, 210, 178);
+}
+.book .author {
+    font-size: 0.65rem;
+    color: rgb(7, 241, 253);
 }
