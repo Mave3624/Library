@@ -1,0 +1,54 @@
+@font-face {
+    font-family: nullish;
+    src: url(Merienda/Merienda-VariableFont_wght.ttf);
+    font-size: normal;
+    font-weight: normal;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: content-box;
+}
+body {
+    background-color: red;
+}
+.head {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+    display: grid;
+    grid-template: 100% / 1fr max-content;
+    background-color: rgba(88, 179, 179, 0.764);
+}
+.name {
+    font-family: nullish;
+    font-size: 16px;
+    color: rgb(61, 25, 102);
+}
+.add button {
+    font-family: monospace;
+    font-size: 18px;
+    color: rgb(61, 25, 102);
+    background-color: gray;
+    border: 1px solid rgb(60, 76, 60);
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px rgb(81, 126, 84);
+    width: 50px;
+}
+main {
+
+}
+span {
+    display: block;
+    color: green;
+    font-family: monospace;
+}
+.book {
+    width: 150px;
+    height: 200px;
+    background-color: rgb(40, 60, 69);
+    font-family: nullish;
+    text-align: center;
+}
