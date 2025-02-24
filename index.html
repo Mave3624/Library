@@ -11,9 +11,36 @@
         <div class="name"> Library Project</div>
         <div class="add"><button>Add</button></div>
     </div>
-    <main>
-
-    </main>
+    <main></main>
+    <dialog>
+        <form action="sumbit" id="form">
+            <div class="title-2">
+                <label for="title">* Book Title:</label>
+                <input type="text" required name="title" minlength="4" maxlength="25" id="title">
+            </div>
+            <div class="author-2">
+                <label for="author">* Book Author:</label>
+                <input type="text" required name="author" minlength="4" maxlength="25" id="author">
+            </div>
+            <div class="page-2">
+                <label for="page">* Number of pages:</label>
+                <input type="text" required name="page" minlength="2" maxlength="6" id="page" inputmode="numeric">
+            </div>
+            <div class="status-2">
+                <label for="status">Read status:</label>
+                <select name="status" id="status" required >
+                    <option value="Read">Read</option>
+                    <option value="Unread">Unread</option>
+                    <option value="Inprogress">Inprogress</option>
+                </select>
+            </div>
+            <div class="btn-2">
+                <button form="form" id="btn-1">Submit</button>
+                <button form="from" id="btn-2">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+    
 </body>
 <script src="script/script.js"></script>
 </html>
