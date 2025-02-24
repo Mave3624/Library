@@ -1,6 +1,7 @@
 const main = document.querySelector("main")
 const add = document.querySelector(".add>button")
 const dialog = document.querySelector('dialog')
+const req = [...document.querySelectorAll('[required]')]
 const form = document.querySelector('#form')
 const submit = document.querySelector('#btn-1')
 const cancel = document.querySelector('#btn-2')
@@ -86,6 +87,8 @@ function Append(Index, Length) {
         
         main.appendChild(Card)
         }
+        value()
+        Delete()
 }
 
 function loop(Length, MainArray) {
@@ -94,65 +97,87 @@ function loop(Length, MainArray) {
     IndexValue = MainArray.length;
 if (Length > IndexValue) {
     Append(IndexValue, Length)
+    
 }}
-
 loop()
-
-/*
-add.addEventListener('click', (title, author, page, status) => {
-    title = prompt("Enter book name", "More than lovers part")
-    author = prompt("Enter book author", "Mave")
-    page = prompt("Enter number of page", 762)
-    status = prompt("Enter read status", "Read")
-
-addBook(title, author, page, status)
-loop()
-})
-*/
 
 function Delete() {
-    const DeleteArray = [...main.querySelectorAll('.delete')]
-    console.log(DeleteArray)
-    DeleteArray.forEach((element, index, object) => {
+const DeleteArray = [...main.querySelectorAll('.delete')]
+
+    DeleteArray.forEach((element) => {
         element.addEventListener('click', () => {
-            value()
-            Library[index] = 'empty'
-            main.querySelector(`[data-index = '${index}']`).remove()
+            let set = element.getAttribute('data-index')
+            Library.splice(set, 1)
+            main.querySelector(`[data-index = '${set}']`).remove()
+            value();
         })
     });
 }
+
 function value() {
     const Books = [...main.querySelectorAll('.book')]
     Books.forEach((element, index) => {
         element.setAttribute('data-index', index)
-    
     })
-    Delete()
+    btn = [...main.querySelectorAll('.delete')]
+    btn.forEach((element, index) => {
+        element.setAttribute('data-index', index)
+    })
 }
-Delete()
+
+function upperCase(Text) {
+    let FirstLetter = Text[0].toUpperCase()
+    let Others = Text.slice(1).toLowerCase()
+    return FirstLetter + Others
+}
 
 add.addEventListener('click', (e) => {
     dialog.showModal()
+
+    let a = req[0].value.trim().length >= 3
+    let b = req[1].value.trim().length >= 2
+    let c = Number(req[2].value.trim()) >= 1
+    if(!a) {
+        req[0].focus()
+    } 
+    else if (!b) {
+        req[1].focus()
+    }
+    else req[2].focus()
 })
+
 cancel.addEventListener('click', (e) => {
     dialog.close()
 })
 
-
 submit.addEventListener('click', (e) => {
     e.preventDefault()
 
-    let req = [...document.querySelectorAll('[required]')]
-    if (
-    req.forEach(element => {
-       console.log(element.value)
-    }))
-   {
-    dialog.close()
-    title = document.querySelector('#title').value
-    author = document.querySelector('#author').value
-    page = document.querySelector('#page').value
-    statu = document.querySelector('#status').value
-   } 
+    a = req[0].value.trim().length >= 3
+    b = req[1].value.trim().length >= 2
+    c = Number(req[2].value.trim()) >= 1
 
+    if (a && b && c) {
+        title = upperCase(req[0].value.trim())
+        author = upperCase(req[1].value.trim())
+        page = req[2].value.trim()
+        state = req[3].value.trim()
+
+    addBook(title, author, page, state)
+    loop()
+        req[0].value = ''
+        req[1].value = ''
+        req[2].value = ''
+    dialog.close()
+    }
+
+    else {
+        if(!a) {
+            req[0].focus()
+        } 
+        else if (!b) {
+            req[1].focus()
+        }
+        else req[2].focus()
+    }
 })

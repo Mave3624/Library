@@ -141,6 +141,7 @@ button svg {
 dialog {
     width: var(--size);
     position: absolute;
+    border: none;
     right: 0%;
     bottom: 0%;
     top: 50%;
