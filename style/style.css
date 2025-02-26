@@ -140,14 +140,13 @@ button svg {
 
 dialog {
     width: var(--size);
-    position: absolute;
     border: none;
     box-shadow: 1px 1px 5px 2px rgba(72, 62, 62, 0.478);
     background-color: #545454b2;
     right: 0%;
     bottom: 0%;
     top: 40%;
-    left: 12%;
+    left: 24vw;
 }
 form {
     height: 220px;
@@ -225,5 +224,5 @@ input:valid {
     border-color: green;
 }
 ::backdrop {
-    background-color: rgba(128, 128, 128, 0.329);
+    background-color: rgba(128, 128, 128, 0.655);
 }
