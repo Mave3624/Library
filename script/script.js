@@ -8,7 +8,7 @@ const cancel = document.querySelector('#btn-2')
 const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete</title><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" /></svg>'
 
 const Library = [
-    {title: 'Welcome To My Library Project', author: 'Maverick', page: '10000', status: 'Default'},
+    new Book('Welcome To My Library Project', 'Maverick', '10000','Default')
 ]
 
 function Book(title, author, page, status) {
@@ -63,7 +63,7 @@ function Append(Index, Length) {
         }
         DataIndexUpdater()
         Delete()
-        /* StatusChanger() */
+        StatusChanger()
 }
 
 function DisplayMostRecent() {
@@ -99,6 +99,10 @@ function DataIndexUpdater() {
     })
     btn = [...main.querySelectorAll('.delete')]
     btn.forEach((element, index) => {
+        element.setAttribute('data-index', index)
+    })
+    Status = [...main.querySelectorAll('.status')]
+    Status.forEach((element, index) => {
         element.setAttribute('data-index', index)
     })
 }
@@ -160,8 +164,8 @@ submit.addEventListener('click', (e) => {
 })
 
 Book.prototype.state = function() {
-    let a = prompt("Change read status", 'inprogress')
-    this.status = a
+    let BookItem = prompt("Change read status", 'inprogress')
+    this.status = upperCase(BookItem)
 }
 
 function StatusChanger() {
@@ -169,9 +173,12 @@ function StatusChanger() {
 
     AvalibleStatus.forEach( (element, index, object) => {
         let lastArray = object[AvalibleStatus.length - 1] === element
+
         if (lastArray) {
         element.addEventListener('click', () => {
-            element.textContent = upperCase(prompt())
+            Library[element.getAttribute('data-index')].state()
+            
+            element.textContent = Library[element.getAttribute('data-index')].status
         }
     )
 }}
